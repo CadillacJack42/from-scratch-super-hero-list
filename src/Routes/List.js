@@ -26,7 +26,6 @@ export default function List({ setDisabled }) {
     e.preventDefault();
     const filteredHeroes = await filterHeroes(column, query);
     setHeroes(filteredHeroes);
-    console.log(filteredHeroes);
   };
 
   return (

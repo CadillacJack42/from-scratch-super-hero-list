@@ -7,20 +7,20 @@ export default function Detail() {
   const { id } = useParams();
   const history = useHistory();
   const [hero, setHero] = useState({});
-  const chooseOperand = () => {
-    history.location.state.state === '+' &&
-      history.push(`/detail/${Number(id) + 1}`, { state: history.location.state.state });
-    history.location.state.state === '-' &&
-      history.push(`/detail/${Number(id) - 1}`, { state: history.location.state.state });
-  };
 
   useEffect(() => {
+    const chooseOperand = () => {
+      history.location.state.state === '+' &&
+        history.push(`/detail/${Number(id) + 1}`, { state: history.location.state.state });
+      history.location.state.state === '-' &&
+        history.push(`/detail/${Number(id) - 1}`, { state: history.location.state.state });
+    };
     const fetchHero = async (id) => {
       const newHero = await getHeroById(id);
       newHero === null ? chooseOperand() : setHero(newHero);
       setHero(newHero);
     };
     fetchHero(id);
-  }, [id]);
+  }, [id, history]);
   return <div>{hero ? <HeroDetail hero={hero} /> : <h1>Loading</h1>}</div>;
 }
