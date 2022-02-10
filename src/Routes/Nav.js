@@ -7,7 +7,6 @@ export default function Nav({ disabled }) {
   const history = useHistory();
   return (
     <div>
-      <h1>Super Hero Catalogue</h1>
       <button
         disabled={num === '1'}
         onClick={() => history.push(`/${section}/${Number(num) - 1}`, { state: '-' })}

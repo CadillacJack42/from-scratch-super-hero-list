@@ -10,6 +10,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <h1>Super Hero Catalogue</h1>
         <Route path="/:section/:num">
           <Nav disabled={disabled} />
         </Route>
