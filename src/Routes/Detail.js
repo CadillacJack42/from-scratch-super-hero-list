@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Hero from '../Hero';
+import HeroDetail from '../HeroDetail';
 import { getHeroById } from '../services/fetch-utils';
 
 export default function Detail() {
@@ -15,5 +15,5 @@ export default function Detail() {
     fetchHero();
   }, [id]);
   console.log(id, hero);
-  return <div>{hero ? <Hero hero={hero} /> : <h1>Loading</h1>}</div>;
+  return <div>{hero ? <HeroDetail hero={hero} /> : <h1>Loading</h1>}</div>;
 }
