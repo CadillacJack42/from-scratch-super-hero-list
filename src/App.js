@@ -2,7 +2,7 @@ import './Styles/App.css';
 import Nav from './Routes/Nav';
 import List from './Routes/List';
 import Detail from './Routes/Detail';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { useState } from 'react';
 
 function App() {
@@ -17,11 +17,9 @@ function App() {
         <Route exact path="/home/:page">
           <List setDisabled={setDisabled} />
         </Route>
-        <Switch>
-          <Route exact path="/detail/:id">
-            <Detail />
-          </Route>
-        </Switch>
+        <Route exact path="/detail/:id">
+          <Detail />
+        </Route>
       </div>
     </Router>
   );
