@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import './Styles/App.css';
+import Nav from './Routes/Nav';
+import List from './Routes/List';
+import Detail from './Routes/Detail';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { useState } from 'react';
 
 function App() {
+  const [disabled, setDisabled] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <h1>Super Hero Catalogue</h1>
+        <Route path="/:section/:num">
+          <Nav disabled={disabled} />
+        </Route>
+        <Route exact path="/home/:page">
+          <List setDisabled={setDisabled} />
+        </Route>
+        <Switch>
+          <Route exact path="/detail/:id">
+            <Detail />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
