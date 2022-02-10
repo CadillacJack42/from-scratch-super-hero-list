@@ -1,5 +1,6 @@
 import './App.css';
 import List from './Routes/List';
+import Detail from './Routes/Detail';
 import { useEffect, useState } from 'react';
 import { getAllHeroes } from './services/fetch-utils';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -30,6 +31,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <List heroes={heroes} />
+          </Route>
+          <Route exact path="/detail/:id">
+            <Detail />
           </Route>
         </Switch>
       </div>

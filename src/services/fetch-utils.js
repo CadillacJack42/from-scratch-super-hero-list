@@ -5,3 +5,9 @@ export const getAllHeroes = async (from, to) => {
 
   return checkError(response);
 };
+
+export const getHeroById = async (id) => {
+  const response = await client.from('super_heroes').select().match({ id }).single();
+  console.log(response);
+  return checkError(response);
+};
