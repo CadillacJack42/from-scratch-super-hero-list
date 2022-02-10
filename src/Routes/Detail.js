@@ -4,19 +4,23 @@ import HeroDetail from '../HeroDetail';
 import { getHeroById } from '../services/fetch-utils';
 
 export default function Detail() {
-  let { id } = useParams();
+  const { id } = useParams();
+  const history = useHistory();
   const [hero, setHero] = useState({});
-  const [route, setRoute] = useState();
+  const chooseOperand = () => {
+    history.location.state.state === '+' &&
+      history.push(`/detail/${Number(id) + 1}`, { state: history.location.state.state });
+    history.location.state.state === '-' &&
+      history.push(`/detail/${Number(id) - 1}`, { state: history.location.state.state });
+  };
 
   useEffect(() => {
     const fetchHero = async (id) => {
       const newHero = await getHeroById(id);
-      //   newHero === null ? setRoute(`/detail/${Number(id) + 1}`) : setHero(newHero);
+      newHero === null ? chooseOperand() : setHero(newHero);
       setHero(newHero);
     };
     fetchHero(id);
-  }, [id, route]);
-  //   console.log(route);
-  //   useRouteMatch(route);
+  }, [id]);
   return <div>{hero ? <HeroDetail hero={hero} /> : <h1>Loading</h1>}</div>;
 }
