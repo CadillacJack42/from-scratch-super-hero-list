@@ -1,0 +1,18 @@
+.hero-container {
+height: 100%;
+width: 100%;
+}
+
+.sub-hero-container {
+    width: 400px;
+    margin: 0;
+}
+.hero-image {
+    width: 250px;
+    height: 350px;
+}
+
+.link {
+    display: flex;
+    flex-direction: column;
+}

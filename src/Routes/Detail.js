@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import HeroDetail from '../HeroDetail';
 import { getHeroById } from '../services/fetch-utils';
 
 export default function Detail() {
-  const { id } = useParams();
+  let { id } = useParams();
   const [hero, setHero] = useState({});
+  const [route, setRoute] = useState();
 
   useEffect(() => {
-    const fetchHero = async () => {
+    const fetchHero = async (id) => {
       const newHero = await getHeroById(id);
+      //   newHero === null ? setRoute(`/detail/${Number(id) + 1}`) : setHero(newHero);
       setHero(newHero);
     };
-    fetchHero();
-  }, [id]);
-  console.log(id, hero);
+    fetchHero(id);
+  }, [id, route]);
+  //   console.log(route);
+  //   useRouteMatch(route);
   return <div>{hero ? <HeroDetail hero={hero} /> : <h1>Loading</h1>}</div>;
 }

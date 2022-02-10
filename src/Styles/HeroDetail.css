@@ -1,0 +1,27 @@
+.hero-container {
+    margin-top: 4%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.hero-detail-image {
+    height: 300px;
+    width: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.names {
+}
+
+.bio {
+    text-align: center;
+}
+
+.hero-name {
+}

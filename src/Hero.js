@@ -1,13 +1,15 @@
 import React from 'react';
+import './Styles/Hero.css';
 import { Link } from 'react-router-dom';
 
 export default function Hero({ hero }) {
-  console.log(hero);
   return (
-    <Link to={`detail/${hero.id}`}>
+    <Link to={`/detail/${hero.id}`} className={'link'}>
       <div className="hero-container">
-        <h2>{`Name : ${hero.name}`}</h2>
-        <img src={hero.image}></img>
+        <div className="sub-hero-container">
+          <h2 className="hero-title">{`Name : ${hero.name}`}</h2>
+          <img className="hero-image" height={'300px'} src={hero.image}></img>
+        </div>
       </div>
     </Link>
   );
