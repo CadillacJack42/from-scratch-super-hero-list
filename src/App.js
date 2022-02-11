@@ -2,7 +2,7 @@ import './Styles/App.css';
 import Nav from './Routes/Nav';
 import List from './Routes/List';
 import Detail from './Routes/Detail';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { useState } from 'react';
 
 function App() {
@@ -11,6 +11,9 @@ function App() {
     <Router>
       <div className="App">
         <h1>Super Hero Catalogue</h1>
+        <Route exact path="/">
+          <Redirect to="/home/1" />
+        </Route>
         <Route exact path="/:section/:num">
           <Nav disabled={disabled} />
         </Route>
