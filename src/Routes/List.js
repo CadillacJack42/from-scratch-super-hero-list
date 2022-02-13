@@ -14,8 +14,10 @@ export default class List extends React.Component {
       end: Number(this.props.match.params.page * 50 - 1),
       disabled: this.props.disabled,
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   async componentDidMount() {
     const allHeroes = await getAllHeroes(this.state.start, this.state.end);
     this.setState({ heroes: allHeroes });
@@ -34,6 +36,7 @@ export default class List extends React.Component {
       this.setState({ heroes: newHeroes });
     }
   }
+
   async handleSubmit(e) {
     e.preventDefault();
     const column = this.state.column;
