@@ -6,7 +6,6 @@ export default class Nav extends Component {
   }
 
   render() {
-    console.log(this.props);
     const num = this.props.match.params.num;
     const section = this.props.match.params.section;
     return (
