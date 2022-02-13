@@ -1,6 +1,6 @@
 import Hero from '../Hero';
-import '../Styles/List.css';
 import React from 'react';
+import '../Styles/List.css';
 import { filterHeroes, getAllHeroes } from '../services/fetch-utils';
 
 export default class List extends React.Component {
@@ -12,7 +12,6 @@ export default class List extends React.Component {
       query: '',
       start: Number((this.props.match.params.page - 1) * 50),
       end: Number(this.props.match.params.page * 50 - 1),
-      disabled: this.props.disabled,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,7 +31,11 @@ export default class List extends React.Component {
       const start = this.state.start;
       const end = this.state.end;
       const newHeroes = await getAllHeroes(start, end);
-      newHeroes < 50 && this.setState({ disabled: true });
+      if (newHeroes) {
+        newHeroes < 50
+          ? await this.props.toggleDisableButton(true)
+          : await this.props.toggleDisableButton(false);
+      }
       this.setState({ heroes: newHeroes });
     }
   }

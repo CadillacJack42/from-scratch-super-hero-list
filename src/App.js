@@ -38,6 +38,10 @@ class App extends React.Component {
     };
   }
 
+  async toggleDisableButton(bool) {
+    bool ? await this.setState({ disabled: true }) : await this.setState({ disabled: false });
+  }
+
   render() {
     return (
       <Router>
@@ -56,7 +60,9 @@ class App extends React.Component {
             <Route
               exact
               path="/home/:page"
-              render={(props) => <List {...props} disabled={this.state.disabled} />}
+              render={(props) => (
+                <List {...props} toggleDisableButton={this.toggleDisableButton.bind(this)} />
+              )}
             />
           </Switch>
           <Switch>
